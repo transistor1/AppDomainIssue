@@ -28,7 +28,7 @@ I did a little detective work.  In OleView, the InprocServer32 attribute for a .
 So, what I can do is implement my own `DllGetClassObject`, like so:
 
 1. Host the .NET runtime in an unmanaged assembly using [CLRCreateInstance](https://msdn.microsoft.com/en-us/library/dd233134(v=vs.110).aspx)
-1. Create the object, and return it
+1. Create the object in a new `AppDomain`, and return it
 
 (I'm guessing it's not as simple as it sounds, though)
 
