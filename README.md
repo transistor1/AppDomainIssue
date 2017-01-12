@@ -2,6 +2,8 @@
 
 When instantiating two, independent .NET COM-visible classes within the same, single-threaded COM client, .NET loads them both into the same AppDomain.
 
+I am guessing that this is because they are being loaded into the same thread.
+
 **Why is this a problem?**
 
 When both classes have the `AppDomain.CurrentDomain.AssemblyResolve` event implemented (or any other AppDomain event, for that matter), the events can interfere with one another.  This is at least one complication; I am guessing that there may be others as well.
