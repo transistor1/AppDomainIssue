@@ -39,4 +39,4 @@ Before I embark on this potentially difficult and lengthy process, I'd like to k
 1. Is there a managed way of getting a .NET COM-visible class to run in its own AppDomain?
 1. If not, is this the "right" way of doing it, or am I missing an obvious solution?
 
-This repository was create as a sample for [this StackOverflow question](http://stackoverflow.com/questions/41616334/how-to-instantiate-a-comvisible-class-into-its-own-appdomain-in-a-single-threade).
+This repository was created as a sample for [this StackOverflow question](http://stackoverflow.com/questions/41616334/how-to-instantiate-a-comvisible-class-into-its-own-appdomain-in-a-single-threade).
