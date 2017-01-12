@@ -6,7 +6,7 @@ I am guessing that this is because they are being loaded into the same thread.
 
 An example of this behavior is shown in [this GitHub repository](https://github.com/transistor1/AppDomainIssue).
 
-Essentially, the example is as follows:
+Essentially, the demonstration is as follows:
 
 1. Instantiate one COM class
 1. Set an attribute on the first COM object which, in the back-end calls `SetData` on the `CurrentDomain`.
@@ -37,4 +37,4 @@ So, what I can do is implement my own `DllGetClassObject`, like so:
 Before I embark on this potentially difficult and lengthy process, I'd like to know:
 
 1. Is there a managed way of getting a .NET COM-visible class to run in its own AppDomain?
-1. If not, is this the "right" way of doing it?  Am I missing an obvious solution?
+1. If not, is this the "right" way of doing it, or am I missing an obvious solution?
