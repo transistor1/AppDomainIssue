@@ -4,6 +4,17 @@ When instantiating two, independent .NET COM-visible classes within the same, si
 
 I am guessing that this is because they are being loaded into the same thread.
 
+An example of this behavior is shown in [this GitHub repository](https://github.com/transistor1/AppDomainIssue).
+
+Essentially, the example is as follows:
+
+1. Instantiate one COM class
+1. Set an attribute on the first COM object which, in the back-end calls `SetData` on the `CurrentDomain`.
+1. Instantiate a second, independent COM class (different interface name, GUIDs, etc)
+1. Read the `AppDomain` attribute
+1. Demonstrate that it appears the same
+1. Also, get the hash code from both `AppDomain`s, noting that it is also the same
+
 **Why is this a problem?**
 
 When both classes have the `AppDomain.CurrentDomain.AssemblyResolve` event implemented (or any other AppDomain event, for that matter), the events can interfere with one another.  This is at least one complication; I am guessing that there may be others as well.
@@ -26,4 +37,4 @@ So, what I can do is implement my own `DllGetClassObject`, like so:
 Before I embark on this potentially difficult and lengthy process, I'd like to know:
 
 1. Is there a managed way of getting a .NET COM-visible class to run in its own AppDomain?
-1. If not, is this the "right" way of doing it?
+1. If not, is this the "right" way of doing it?  Am I missing an obvious solution?
