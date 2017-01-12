@@ -21,7 +21,7 @@ When both classes have the `AppDomain.CurrentDomain.AssemblyResolve` event imple
 
 **An Idea**
 
-I thought the best way of handling this would be to create a new AppDomain for each COM object, and have each object run within its own AppDomain.  Because I could not find (or Google) a way of doing this in a managed way, I thought it might be necessary to do it in unmanaged code.
+I thought the best way of handling this would be to create a new AppDomain for each COM object.  Because I could not find (or Google) a way of doing this in a managed way, I thought it might be necessary to do it in unmanaged code.
 
 I did a little detective work.  In OleView, the InprocServer32 attribute for a .NET COM-visible class is `mscoree.dll`.  So, I created a "shim" DLL which forwarded all of its `EXPORTS` to mscoree.dll.  By process of elimination (eliminating exports until the COM would no longer load), I discovered that `DllGetClassObject` in `mscoree` was responsible for starting up the .NET runtime, and returning the instantiated COM object.
 
