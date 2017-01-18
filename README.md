@@ -1,4 +1,4 @@
-**This branch contains a solution to the question below, which was posed on StackOverflow**
+**This branch contains a solution to the question below, which was posted on StackOverflow**
 
 Credit to [Mitch](http://stackoverflow.com/a/41712885/864414) on StackOverflow, and to [Microsoft](https://support.microsoft.com/en-us/kb/977996).
 
