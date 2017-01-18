@@ -7,12 +7,12 @@ echo %COM2%
 
 if "%1"=="/u" goto :unregister
 
-"%REGASM%"  /tlb /codebase "%COM1%"
+"%REGASM%"  /tlb "%COM1%"
 "%REGASM%"  /tlb /codebase "%COM2%"
 
 exit /b
 
 
 :unregister
-"%REGASM%"  /u /tlb /codebase "%COM1%"
+"%REGASM%"  /u /tlb "%COM1%"
 "%REGASM%"  /u /tlb /codebase "%COM2%"
