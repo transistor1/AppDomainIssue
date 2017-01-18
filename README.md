@@ -1,3 +1,9 @@
+**This branch contains a solution to the question below, which was posed on StackOverflow**
+
+Credit to [Mitch](http://stackoverflow.com/a/41712885/864414) on StackOverflow, and to [Microsoft](https://support.microsoft.com/en-us/kb/977996).
+
+The code in this branch implements an out-of-process COM server in .NET, which is instantiated with its own AppDomain.
+
 **The Problem**
 
 When instantiating two, independent .NET COM-visible classes within the same, single-threaded COM client, .NET loads them both into the same AppDomain.
