@@ -24,7 +24,7 @@ namespace Com_1
     [Guid(ComClass1.ClassId)]
     [Description("Sample COM Class 1")]
     [ProgId("Com1.ComClass1")]
-    public class ComClass1 : IComClass1
+    public partial class ComClass1 : ReferenceCountedObject, IComClass1
     {
         internal const string ClassId = "3CA12D49-CFE5-45A3-B114-22DF2D7A0CAB";
         internal const string InterfaceId = "F35D5D5D-4A3C-4042-AC35-CE0C57AF8383";
