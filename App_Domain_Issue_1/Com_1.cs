@@ -47,5 +47,39 @@ namespace Com_1
         {
             return AppDomain.CurrentDomain.GetHashCode();
         }
+
+        //[EditorBrowsable(EditorBrowsableState.Never)]
+        [ComRegisterFunction]
+        public static void Register(Type t)
+        {
+            try
+            {
+                COMHelper.RegasmRegisterLocalServer(t);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message); // Log the error
+                throw ex; // Re-throw the exception
+            }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [ComUnregisterFunction]
+        public static void Unregister(Type t)
+        {
+            try
+            {
+                COMHelper.RegasmUnregisterLocalServer(t);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message); // Log the error
+                throw ex; // Re-throw the exception
+            }
+        }
+
     }
 }
+
+
+
