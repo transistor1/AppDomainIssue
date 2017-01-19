@@ -22,12 +22,19 @@ namespace ComClasses
                 Marshal.ThrowExceptionForHR(COMNative.CLASS_E_NOAGGREGATION);
             }
 
-            FieldInfo clsIdField = typeof(comType).GetField("ClassId", BindingFlags.Static |
-                BindingFlags.NonPublic | BindingFlags.Public );
-            string clsId = (string)clsIdField?.GetValue(null);
+            //Find the member decorated with the ClassId attribute.
+            MemberFilter clsIdFilter = new MemberFilter((MemberInfo memberInfo, object obj) =>
+            {
+                return (memberInfo.CustomAttributes.Any<CustomAttributeData>(
+                        (attr) => attr.AttributeType == typeof(ClassIdAttribute)));
+            });
 
-            if (clsId == null)
-                throw new NotImplementedException("The ClassId field is not implemented in class " + typeof(comType).Name + ". Please make sure this class declares a ClassId string, containing the class's GUID." );
+            MemberInfo clsIdField = typeof(comType).FindMembers(MemberTypes.Field | MemberTypes.Property, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic, clsIdFilter, null).FirstOrDefault();
+
+            if (clsIdField == null)
+                throw new NotImplementedException("The ClassId member is not implemented in class " + typeof(comType).Name + ". Please make sure this class declares a static ClassId string field or property, containing the class's GUID.");
+
+            string clsId = (string)((dynamic)clsIdField)?.GetValue(null);
 
             if (riid == new Guid(clsId) ||
                 riid == new Guid(COMNative.IID_IDispatch) ||
