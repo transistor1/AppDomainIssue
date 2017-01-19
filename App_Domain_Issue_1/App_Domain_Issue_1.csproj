@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComClasses\COMHelper.cs" />
+    <Compile Include="ComClasses\GenericClassFactory.cs" />
     <Compile Include="Com_1.ClassFactory.cs" />
     <Compile Include="Com_1.cs" />
     <Compile Include="ComClasses\OutOfProcCom.cs" />
