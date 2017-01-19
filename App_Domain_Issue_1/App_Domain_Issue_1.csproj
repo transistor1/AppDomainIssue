@@ -69,11 +69,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="COMHelper.cs" />
+    <Compile Include="ComClasses\COMHelper.cs" />
     <Compile Include="Com_1.ClassFactory.cs" />
     <Compile Include="Com_1.cs" />
-    <Compile Include="OutOfProcCom.cs" />
-    <Compile Include="NativeMethod.cs" />
+    <Compile Include="ComClasses\OutOfProcCom.cs" />
+    <Compile Include="ComClasses\NativeMethod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
