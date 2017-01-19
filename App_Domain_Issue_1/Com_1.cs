@@ -29,12 +29,9 @@ namespace Com_1
     [ProgId("Com1.ComClass1")]
     public partial class ComClass1 : ReferenceCountedObject, IComClass1
     {
+        [ClassId]
         internal const string ClassId = "3CA12D49-CFE5-45A3-B114-22DF2D7A0CAB";
         internal const string InterfaceId = "F35D5D5D-4A3C-4042-AC35-CE0C57AF8383";
-
-        static ComClass1()
-        {
-        }
 
         public void SetAppDomainData(string data)
         {
