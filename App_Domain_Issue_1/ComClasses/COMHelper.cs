@@ -24,6 +24,9 @@ using Microsoft.Win32;
 using System.Reflection;
 #endregion
 
+//This decorator identifies the ClassId field
+internal class ClassIdAttribute : Attribute
+{ }
 
 internal class COMHelper
 {
